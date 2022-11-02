@@ -3412,6 +3412,7 @@
         </div>
         <!--end::Theme mode-->
         <!--begin::User-->
+
         <div
           class="d-flex align-items-center ms-2 ms-lg-3"
           id="kt_header_user_menu_toggle"
@@ -3419,9 +3420,6 @@
           <!--begin::Menu wrapper-->
           <div
             class="cursor-pointer symbol symbol-30px symbol-md-40px"
-            data-kt-menu-trigger="click"
-            data-kt-menu-attach="parent"
-            data-kt-menu-placement="bottom-end"
           >
             <!-- <img src="" alt="image" /> -->
             <img src="assets-dashboard/media/avatars/blank.png" alt="image" />
@@ -3431,7 +3429,6 @@
             class="
               menu
               menu-sub
-              menu-sub-dropdown
               menu-column
               menu-rounded
               menu-gray-800
@@ -3442,7 +3439,7 @@
               fs-6
               w-275px
             "
-            data-kt-menu="true"
+            data-kt-menu="false"
           >
             <!--begin::Menu item-->
             <div class="menu-item px-3">
@@ -3497,8 +3494,6 @@
               <a
                 class="menu-link px-5"
                 href=""
-                onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"
                 >Sign Out</a
               >
               <form id="logout-form" class="d-none"></form>
@@ -3508,6 +3503,8 @@
           <!--end::User account menu-->
           <!--end::Menu wrapper-->
         </div>
+
+
         <!--end::User -->
         <!--begin::Heaeder menu toggle-->
         <!--end::Heaeder menu toggle-->
