@@ -129,7 +129,12 @@
             >
               <div></div>
               <!--begin::Link-->
-              <a class="link-primary">Forgot Password ?</a>
+              <a
+                class="link-primary"
+                style="cursor: pointer"
+                @click="forgotPassword"
+                >Forgot Password ?</a
+              >
               <!--end::Link-->
             </div>
             <!--end::Wrapper-->
@@ -154,7 +159,9 @@
             <div class="text-gray-500 text-center fw-semibold fs-6">
               Not a Member yet?
 
-              <a href="" class="link-primary">Sign up</a>
+              <a @click="signUp" style="cursor: pointer" class="link-primary"
+                >Sign up</a
+              >
             </div>
             <!--end::Sign up-->
           </form>
@@ -264,9 +271,17 @@ export default {
 
   methods: {
     Login() {
-      if (this.email && this.password) {
+      if (this.email == "sukhdeep@mail.com" && this.password == "12345") {
         this.$router.push("/dashboard");
       }
+    },
+
+    forgotPassword() {
+      this.$router.push("/resetPassword");
+    },
+
+    signUp() {
+      this.$router.push("/registerUser");
     },
   },
   components: {},

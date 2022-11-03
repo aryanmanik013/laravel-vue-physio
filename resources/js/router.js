@@ -7,7 +7,7 @@ import AllUser from "./Pages/AllUser.vue";
 
 const routes = [
     {
-        path: "/login",
+        path: "/",
         name: "login",
         component: Login,
     },
