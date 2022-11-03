@@ -33,16 +33,22 @@ const routes = [
         path: "/allUser",
         name: "allUser",
         component: AllUser,
+        meta: {
+            needsAuth: true,
+        },
     },
 ];
+const router = createRouter({ history: createWebHistory(), routes });
+// router.beforeEach((to, from, next) => {
 
-// routes.beforeEach((to, from, next) => {
+
+
 //     if (to.meta.needsAuth) {
-//         next("/login");
+//         next("/dashboard");
 //     } else {
 //         next();
 //     }
+
 // });
 
-const router = createRouter({ history: createWebHistory(), routes });
 export default router;

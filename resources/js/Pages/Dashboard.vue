@@ -13,7 +13,8 @@ import Footer from "./components/footer.vue";
 export default {
   components: {
     TopNAv,
-    DashboardLayout
+    DashboardLayout,
+    Footer
   },
 };
 </script>

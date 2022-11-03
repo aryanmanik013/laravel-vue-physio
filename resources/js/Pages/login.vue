@@ -140,7 +140,7 @@
             <!--end::Wrapper-->
             <!--begin::Submit button-->
             <div class="d-grid mb-10">
-              <button type="submit" @click="Login" class="btn btn-primary">
+              <button type="submit" @click.prevent="Login" class="btn btn-primary">
                 <!--begin::Indicator label-->
                 <span class="indicator-label">Sign In</span>
                 <!--end::Indicator label-->
