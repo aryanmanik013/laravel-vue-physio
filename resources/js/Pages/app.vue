@@ -1,14 +1,9 @@
 <template>
-  <Login v-if="LoginShow" />
-  <Register v-if="registerUser" />
-  <Dashboard v-if="dashboardShow" />
-  <resetPassword v-if="resetPassword" />
-  <AllUser/>
+  <Login/>
 </template>
 
 <script>
 import Dashboard from "./Dashboard.vue";
-
 import resetPassword from "./resetPassword.vue";
 import Login from "./login.vue";
 import Register from "./register.vue";
@@ -17,9 +12,6 @@ export default {
   data() {
     return {
       LoginShow: true,
-      registerUser: true,
-      dashboardShow: true,
-      resetPassword: true,
     };
   },
   components: {
@@ -27,15 +19,15 @@ export default {
     Login,
     Register,
     resetPassword,
-    AllUser
+    AllUser,
   },
 };
 </script>
 <style>
-body {
+/* body {
   background-image: url("assets/media/auth/bg10.jpeg");
 }
 [data-theme="dark"] body {
   background-image: url("assets/media/auth/bg10-dark.jpeg");
-}
+} */
 </style>

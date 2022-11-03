@@ -16,7 +16,7 @@
         <div class="w-lg-500px p-10">
           <!--begin::Form-->
 
-          <form class="form w-100" method="POST">
+          <form class="form w-100">
             <!--begin::Heading-->
             <div class="text-center mb-11">
               <!--begin::Title-->
@@ -101,12 +101,11 @@
             <div class="fv-row mb-8">
               <!--begin::Email-->
               <input
+                v-model="email"
                 id="email"
                 placeholder="Email"
                 type="email"
                 class="form-control bg-transparent"
-                name="email"
-                value=""
                 autocomplete="email"
                 autofocus
               />
@@ -117,9 +116,9 @@
               <input
                 id="password"
                 type="password"
+                v-model="password"
                 placeholder="password"
                 class="form-control bg-transparent"
-                name="password"
                 autocomplete="current-password"
               />
             </div>
@@ -136,7 +135,7 @@
             <!--end::Wrapper-->
             <!--begin::Submit button-->
             <div class="d-grid mb-10">
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" @click="Login" class="btn btn-primary">
                 <!--begin::Indicator label-->
                 <span class="indicator-label">Sign In</span>
                 <!--end::Indicator label-->
@@ -154,6 +153,7 @@
             <!--begin::Sign up-->
             <div class="text-gray-500 text-center fw-semibold fs-6">
               Not a Member yet?
+
               <a href="" class="link-primary">Sign up</a>
             </div>
             <!--end::Sign up-->
@@ -251,17 +251,25 @@
     </div>
     <!--end::Aside-->
   </div>
-
-
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      email: "",
+      password: "",
+    };
   },
-  components: {
+
+  methods: {
+    Login() {
+      if (this.email && this.password) {
+        this.$router.push("/dashboard");
+      }
+    },
   },
+  components: {},
 };
 </script>
 
