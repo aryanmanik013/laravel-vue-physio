@@ -1,6 +1,4 @@
 <template>
-  <!--end::Header-->
-  <!--begin::Wrapper-->
   <TopNAv />
   <DashboardLayout/>
 <Footer/>

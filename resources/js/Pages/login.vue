@@ -101,7 +101,7 @@
             <div class="fv-row mb-8">
               <!--begin::Email-->
               <input
-                v-model="email"
+                v-model="form.email"
                 id="email"
                 placeholder="Email"
                 type="email"
@@ -116,7 +116,7 @@
               <input
                 id="password"
                 type="password"
-                v-model="password"
+                v-model="form.password"
                 placeholder="password"
                 class="form-control bg-transparent"
                 autocomplete="current-password"
@@ -140,7 +140,11 @@
             <!--end::Wrapper-->
             <!--begin::Submit button-->
             <div class="d-grid mb-10">
-              <button type="submit" @click.prevent="Login" class="btn btn-primary">
+              <button
+                type="submit"
+                @click.prevent="Login"
+                class="btn btn-primary"
+              >
                 <!--begin::Indicator label-->
                 <span class="indicator-label">Sign In</span>
                 <!--end::Indicator label-->
@@ -261,21 +265,31 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
-      email: "",
-      password: "",
+      form: {
+        email: "",
+        password: "",
+      },
     };
   },
 
   methods: {
-    Login() {
-      if (this.email == "sukhdeep@mail.com" && this.password == "12345") {
-        this.$router.push("/dashboard");
-      }
+    async Login() {
+      await axios.post("/api/loginApi", this.form).then((response) => {
+        if (response.data) {
+          console.log(response.data.user.name, "Response");
+          console.log(response.data.user.id, "Response2");
+          localStorage.setItem("UserName", response.data.user.name);
+          localStorage.setItem("token", response.data.token);
+          this.$router.push("/dashboard");
+        } else {
+          alert("Login Failed");
+        }
+      });
     },
-
     forgotPassword() {
       this.$router.push("/resetPassword");
     },
@@ -284,6 +298,7 @@ export default {
       this.$router.push("/registerUser");
     },
   },
+
   components: {},
 };
 </script>

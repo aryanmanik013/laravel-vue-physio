@@ -3413,14 +3413,15 @@
         <!--end::Theme mode-->
         <!--begin::User-->
 
+        <button class="btn btn-primary" @click="userPage">All User</button>
+        <button class="btn btn-primary sm" @click="logout">Logout</button>
+
         <div
           class="d-flex align-items-center ms-2 ms-lg-3"
           id="kt_header_user_menu_toggle"
         >
           <!--begin::Menu wrapper-->
-          <div
-            class="cursor-pointer symbol symbol-30px symbol-md-40px"
-          >
+          <div class="cursor-pointer symbol symbol-30px symbol-md-40px">
             <!-- <img src="" alt="image" /> -->
             <img src="assets-dashboard/media/avatars/blank.png" alt="image" />
           </div>
@@ -3491,11 +3492,7 @@
             <!--end::Menu item-->
             <!--begin::Menu item-->
             <div class="menu-item px-5">
-              <a
-                class="menu-link px-5"
-                href=""
-                >Sign Out</a
-              >
+              <a class="menu-link px-5" href="">Sign Out</a>
               <form id="logout-form" class="d-none"></form>
             </div>
             <!--end::Menu item-->
@@ -3503,7 +3500,6 @@
           <!--end::User account menu-->
           <!--end::Menu wrapper-->
         </div>
-
 
         <!--end::User -->
         <!--begin::Heaeder menu toggle-->
@@ -3526,7 +3522,6 @@
           align-items-stretch
           flex-lg-row
         "
-
       >
         <!--begin::Menu-->
         <div
@@ -7991,7 +7986,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    userPage() {
+      this.$router.push("/allUser");
+    },
+    logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("UserName");
+      this.$router.push("/");
+    },
+  },
+};
 </script>
 
 <style>

@@ -8,22 +8,31 @@ import AllUser from "./Pages/AllUser.vue";
 const routes = [
     {
         path: "/",
-        name: "login",
+        name: "Login",
         component: Login,
+        meta: {
+            needsAuth: false,
+        },
     },
     {
         path: "/registerUser",
-        name: "registerUser",
+        name: "RegisterUser",
         component: RegisterUser,
+        meta: {
+            needsAuth: false,
+        },
     },
     {
         path: "/resetPassword",
-        name: "resetPassword",
+        name: "ResetPassword",
         component: ForgotPassword,
+        meta: {
+            needsAuth: false,
+        },
     },
     {
         path: "/dashboard",
-        name: "dashboard",
+        name: "Dashboard",
         component: Dashboard,
         meta: {
             needsAuth: true,
@@ -31,7 +40,7 @@ const routes = [
     },
     {
         path: "/allUser",
-        name: "allUser",
+        name: "AllUser",
         component: AllUser,
         meta: {
             needsAuth: true,
@@ -39,16 +48,19 @@ const routes = [
     },
 ];
 const router = createRouter({ history: createWebHistory(), routes });
-// router.beforeEach((to, from, next) => {
+router.beforeEach((to, from) => {
+    if (to.meta.needsAuth && !localStorage.getItem("token")) {
+        // from("/");
 
 
+        return {'name' : 'Login'}
+    }
+    if (to.meta.needsAuth == false && localStorage.getItem("token")) {
+        // from("Dashboard");
 
-//     if (to.meta.needsAuth) {
-//         next("/dashboard");
-//     } else {
-//         next();
-//     }
+        return {'name' : 'Dashboard'}
 
-// });
+    }
+});
 
 export default router;

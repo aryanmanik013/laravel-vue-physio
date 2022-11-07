@@ -1032,10 +1032,14 @@
             <!--end::Table head-->
             <!--begin::Table body-->
             <tbody class="text-gray-600 fw-semibold">
-              <tr>
+              <tr v-for="item in items" :key="item.id">
                 <!--begin::Checkbox-->
                 <td>
-                  <div
+                    <span class="text-white">
+
+                    </span>
+
+                  <!-- <div
                     class="
                       form-check
                       form-check-sm
@@ -1044,7 +1048,7 @@
                     "
                   >
                     <input class="form-check-input" type="checkbox" value="1" />
-                  </div>
+                  </div> -->
                 </td>
                 <!--end::Checkbox-->
                 <!--begin::User=-->
@@ -1067,6 +1071,7 @@
                           alt="image"
                         />
                       </div>
+
                     </a>
                   </div>
                   <!--end::Avatar-->
@@ -1178,7 +1183,24 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+export default {
+  data() {
+    return {
+        items:[]
+    };
+  },
+  methods: {
+    async userRecords() {
+      let tableData = await axios.get("/api/getAllUser");
+        this.items = tableData
+    },
+  },
+
+  created(){
+    this.userRecords()
+  }
+};
 </script>
 
 <style>

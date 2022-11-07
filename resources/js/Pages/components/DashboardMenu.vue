@@ -279,15 +279,17 @@
                   <!--begin::Name-->
                   <a
                     href="#"
+                    style=" text-transform:capitalize;"
                     class="fs-3 text-gray-800 text-hover-primary fw-bold mb-3"
-                  ></a>
+                    >{{ this.user }}</a
+                  >
                   <!--end::Name-->
                   <!--begin::Position-->
                   <div class="mb-9">
                     <!--begin::Badge-->
-                    <div
-                      class="badge badge-lg badge-light-primary d-inline"
-                    ></div>
+                    <div class="badge badge-lg badge-light-primary d-inline">
+                      Admin
+                    </div>
                     <!--begin::Badge-->
                   </div>
                   <!--end::Position-->
@@ -6228,7 +6230,7 @@
                             <div
                               class="image-input-wrapper w-125px h-125px"
                               style="
-                                background-image: url(assets-dashboard/media/avatars/300-6.jpg;
+                                background-image: url(assets-dashboard/media/avatars/300-6.jpg;;;;
                               "
                             ></div>
                             <!--end::Preview existing avatar-->
@@ -8225,7 +8227,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      user: "",
+    };
+  },
+
+  mounted() {
+    let name = localStorage.getItem("UserName");
+    this.user = name;
+  },
+};
 </script>
 
 <style>
